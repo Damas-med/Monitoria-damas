@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Extensão – DAMAS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="header-esquerda">
+    <img src="brasao.png" alt="Brasão DAMAS" class="header-logo-img">
+    <div>
+      <div class="header-logo-nome">Diretório Acadêmico de Medicina</div>
+      <div class="header-logo-sub">DR. ALEXANDRE SALES · ASCES-UNITA</div>
+    </div>
+  </div>
+  <div class="header-centro">
+    <h1 class="header-titulo">Extensão <span>Acadêmica</span></h1>
+    <p class="header-desc">Conecte-se com a comunidade. Os projetos de extensão permitem aplicar o conhecimento médico na prática, transformando vidas e impactando a sociedade.</p>
+  </div>
+  <div class="header-card">
+    <div class="header-card-icon">🌍</div>
+    <div>
+      <div class="header-card-titulo">Vagas abertas!</div>
+      <div class="header-card-sub">Confira os projetos disponíveis agora.</div>
+      <button class="header-card-btn" onclick="document.getElementById('main-section').scrollIntoView({behavior:'smooth'})">Ver projetos →</button>
+    </div>
+  </div>
+</header>
+
+<!-- BENEFÍCIOS -->
+<div class="beneficios">
+  <div class="beneficio">
+    <div class="beneficio-icon">🏥</div>
+    <div>
+      <div class="beneficio-titulo">Impacto social</div>
+      <div class="beneficio-sub">Transforme vidas na comunidade</div>
+    </div>
+  </div>
+  <div class="beneficio">
+    <div class="beneficio-icon">🤝</div>
+    <div>
+      <div class="beneficio-titulo">Trabalho em equipe</div>
+      <div class="beneficio-sub">Colabore com colegas e professores</div>
+    </div>
+  </div>
+  <div class="beneficio">
+    <div class="beneficio-icon">🏅</div>
+    <div>
+      <div class="beneficio-titulo">Horas complementares</div>
+      <div class="beneficio-sub">Enriqueça seu currículo acadêmico</div>
+    </div>
+  </div>
+  <div class="beneficio">
+    <div class="beneficio-icon">📜</div>
+    <div>
+      <div class="beneficio-titulo">Certificação</div>
+      <div class="beneficio-sub">Receba certificado ao final das atividades</div>
+    </div>
+  </div>
+</div>
+
+<!-- INFO RÁPIDA -->
+<div class="info-rapida">
+  <div class="info-item"><span class="info-icon">📅</span><div><strong>Quando abrem?</strong><div class="info-sub">Normalmente no início de cada semestre</div></div></div>
+  <div class="info-item"><span class="info-icon">⏱️</span><div><strong>Duração</strong><div class="info-sub">1 semestre letivo</div></div></div>
+  <div class="info-item"><span class="info-icon">🎓</span><div><strong>Modalidade</strong><div class="info-sub">Com bolsa ou voluntária</div></div></div>
+  <div class="info-item"><span class="info-icon">📋</span><div><strong>Seleção</strong><div class="info-sub">Realizada por edital específico</div></div></div>
+</div>
+
+<!-- SEÇÃO PRINCIPAL -->
+<section class="main-section" id="main-section">
+  <div class="busca-row">
+    <div class="busca-wrap">
+      <span class="busca-icon">🔍</span>
+      <input class="busca-input" id="busca-input" type="text" placeholder="Buscar projeto..." oninput="filtrar()">
+    </div>
+    <button class="btn-filtros" id="btn-modalidade" onclick="ciclarModalidade()">💰 Modalidade: <span id="label-modalidade">Todas</span></button>
+    <button class="btn-filtros" id="btn-status" onclick="ciclarStatus()">⚙️ Status: <span id="label-status">Todos</span></button>
+  </div>
+
+  <div class="areas-row">
+    <button class="area-pill ativa" onclick="filtrarArea(this,'')">Todas</button>
+    <button class="area-pill" onclick="filtrarArea(this,'Básicas')">Básicas</button>
+    <button class="area-pill" onclick="filtrarArea(this,'Clínicas')">Clínicas</button>
+    <button class="area-pill" onclick="filtrarArea(this,'Cirúrgicas')">Cirúrgicas</button>
+    <button class="area-pill" onclick="filtrarArea(this,'Pediatria')">Pediatria</button>
+    <button class="area-pill" onclick="filtrarArea(this,'Saúde Coletiva')">Saúde Coletiva</button>
+  </div>
+
+  <div class="sec-header">
+    <h2 class="sec-titulo">Projetos disponíveis</h2>
+    <button class="btn-ver-todos" id="btn-ver-todos" onclick="verTodas()" style="display:none">Ver todos os projetos →</button>
+  </div>
+
+  <div class="monitorias-grid" id="grid">
+    <div class="loading-wrap"><div class="spinner"></div><span>Carregando projetos...</span></div>
+  </div>
+
+  <div class="ver-todas-wrap" id="ver-todas-wrap" style="display:none">
+    <button class="btn-ver-todas" onclick="verTodas()">Ver todos os projetos ↓</button>
+  </div>
+</section>
+
+<!-- COMO FUNCIONA -->
+<section class="como-section">
+  <h2 class="como-titulo">Como funciona?</h2>
+  <div class="como-linha"></div>
+  <div class="como-steps">
+    <div class="step"><div class="step-num">1</div><div class="step-icon">📋</div><div class="step-titulo">Edital</div><div class="step-desc">Acompanhe os editais publicados no site.</div></div>
+    <div class="step-arrow">→</div>
+    <div class="step"><div class="step-num">2</div><div class="step-icon">✏️</div><div class="step-titulo">Inscrição</div><div class="step-desc">Realize sua inscrição dentro do prazo.</div></div>
+    <div class="step-arrow">→</div>
+    <div class="step"><div class="step-num">3</div><div class="step-icon">👥</div><div class="step-titulo">Seleção</div><div class="step-desc">Participe do processo seletivo.</div></div>
+    <div class="step-arrow">→</div>
+    <div class="step"><div class="step-num">4</div><div class="step-icon">✅</div><div class="step-titulo">Resultado</div><div class="step-desc">Acompanhe o resultado no site.</div></div>
+    <div class="step-arrow">→</div>
+    <div class="step"><div class="step-num">5</div><div class="step-icon">🌍</div><div class="step-titulo">Início</div><div class="step-desc">Participe das atividades do projeto.</div></div>
+  </div>
+</section>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modal-overlay" onclick="if(event.target===this)fecharModal()">
+  <div class="modal">
+    <button class="modal-close" onclick="fecharModal()">✕</button>
+    <div id="modal-content"></div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
